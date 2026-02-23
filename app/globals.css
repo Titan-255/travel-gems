@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
+}
+
+@layer base {
+  body {
+    background-color: #fce7fb;
+    background-image: radial-gradient(#d3a5ef 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+.comic-border {
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+  transition: all 0.2s ease-in-out;
+}
+
+.comic-border:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px 0px rgba(0,0,0,1);
+}
+
+.comic-text {
+  text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff;
+}
