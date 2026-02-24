@@ -6,8 +6,29 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum PlaceType {
+  VIEWPOINT
+  CAFE
+  BEACH
+  TREK
+  COWORKING
+  OTHER
+}
+
+enum CostLevel {
+  FREE
+  CHEAP
+  MID
+  EXPENSIVE
 }
 
 model Account {
@@ -16,12 +37,12 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?
-  access_token       String?
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?
+  id_token           String?  @db.Text
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -44,7 +65,7 @@ model User {
   emailVerified DateTime?
   image         String?
   passwordHash  String?
-  role          String      @default("USER")
+  role          Role      @default(USER)
   createdAt     DateTime  @default(now())
   places        Place[]   @relation("UserPlaces")
   favorites     Favorite[]
@@ -82,12 +103,12 @@ model Place {
   description    String
   lat            Float
   lng            Float
-  type           String
-  costLevel      String
+  type           PlaceType
+  costLevel      CostLevel
   soloFriendly   Boolean
   bestTime       String?
   safetyNotes    String?
-  photos         String    // JSON stringified array of photo URLs
+  photos         Json      // JSON array of photo URLs
   createdAt      DateTime  @default(now())
   createdByUserId String?
 

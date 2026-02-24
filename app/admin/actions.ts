@@ -36,8 +36,7 @@ export async function createPlace(data: FormData) {
     const safetyNotes = data.get("safetyNotes") as string;
     const photosStr = data.get("photos") as string;
 
-    const photosArray = photosStr ? photosStr.split(",").map(s => s.trim()) : [];
-    const photos = JSON.stringify(photosArray);
+    const photos = photosStr ? photosStr.split(",").map(s => s.trim()) : [];
 
     await prisma.place.create({
         data: {

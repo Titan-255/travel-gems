@@ -74,8 +74,8 @@ export default function CityClientView({ city, places }: { city: any, places: an
                             >
                                 <div className={`flex flex-col sm:flex-row gap-4 bg-white border-4 border-black p-4 rounded-3xl transition-transform cursor-pointer ${hoveredPlace === place.id ? 'shadow-[8px_8px_0px_#3b82f6] -translate-x-1 -translate-y-1' : 'shadow-[4px_4px_0px_#000]'}`}>
                                     <div className="sm:w-32 sm:h-32 bg-gray-200 border-2 border-black rounded-2xl flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        {place.photos && JSON.parse(place.photos)[0] ? (
-                                            <img src={JSON.parse(place.photos)[0]} alt={place.name} className="w-full h-full object-cover" />
+                                        {place.photos && (place.photos as string[])[0] ? (
+                                            <img src={(place.photos as string[])[0]} alt={place.name} className="w-full h-full object-cover" />
                                         ) : (
                                             <span className="font-bold text-gray-500">No Image</span>
                                         )}

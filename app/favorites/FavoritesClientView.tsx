@@ -33,8 +33,8 @@ export default function FavoritesClientView({ initialFavorites }: { initialFavor
             {favorites.map((fav) => (
                 <div key={fav.id} className="bg-white border-4 border-black rounded-3xl overflow-hidden shadow-[6px_6px_0px_#000] flex flex-col pt-4">
                     <div className="h-[200px] bg-blue-100 flex items-center justify-center relative mb-4">
-                        {fav.place.photos && JSON.parse(fav.place.photos).length > 0 ? (
-                            <img src={JSON.parse(fav.place.photos)[0]} alt={fav.place.name} className="w-full h-[200px] object-cover" />
+                        {fav.place.photos && (fav.place.photos as string[]).length > 0 ? (
+                            <img src={(fav.place.photos as string[])[0]} alt={fav.place.name} className="w-full h-[200px] object-cover" />
                         ) : <MapPin className="w-16 h-16 animate-bounce text-blue-500" />}
                     </div>
                     <div className="p-6 flex flex-col flex-1">

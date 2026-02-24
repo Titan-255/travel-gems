@@ -72,7 +72,7 @@ async function main() {
                 soloFriendly: true,
                 bestTime: 'Early morning',
                 safetyNotes: 'Well lit during the day. Go before sunset.',
-                photos: JSON.stringify([c.imageUrl])
+                photos: [c.imageUrl]
             })
         }
 

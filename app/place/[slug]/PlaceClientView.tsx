@@ -41,9 +41,9 @@ export default function PlaceClientView({ place }: { place: any }) {
         <div className="flex flex-col lg:flex-row gap-8">
             {/* Detail Card */}
             <div className="lg:w-2/3 flex flex-col gap-6">
-                {place.photos && JSON.parse(place.photos).length > 0 && (
+                {place.photos && (place.photos as string[]).length > 0 && (
                     <div className="border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_#000]">
-                        <img src={JSON.parse(place.photos)[0]} alt={place.name} className="w-full h-[400px] object-cover hover:scale-105 transition duration-500" />
+                        <img src={(place.photos as string[])[0]} alt={place.name} className="w-full h-[400px] object-cover hover:scale-105 transition duration-500" />
                     </div>
                 )}
 
